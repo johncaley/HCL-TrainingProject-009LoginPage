@@ -35,7 +35,24 @@ public class createUserController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		out.print("Please Work");
+		String username = request.getParameter("username");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String password2 = request.getParameter("password2");
+		
+		if (password.equals(password2)) {
+			out.print("<p>Error: Passwords do not match</p>");
+		}
+		else {
+			User user = new User();
+			user.setUsername(username);
+			user.setPassword(password);
+			user.setEmail(email);
+			
+			HibernateCreateUser.createUser(user);
+			
+			out.print("<p>" + user.getUsername() + "'s Account was  created</p>");
+		}
 	}
 
 }

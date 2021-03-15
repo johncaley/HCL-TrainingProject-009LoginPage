@@ -1,15 +1,14 @@
 package com;
 
-
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class HibernateMain {
-	public static void AddtoDB(User user) {
+public class HibernateCreateUser {
+
+	public static void createUser(User user) {
 		try {
 			Configuration configuration = new Configuration().configure();
 			configuration.addAnnotatedClass(com.User.class);
@@ -26,6 +25,7 @@ public class HibernateMain {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
+	
+	
 }
